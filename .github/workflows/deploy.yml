@@ -1,0 +1,26 @@
+name: Deploy Website
+
+# STUB — not yet wired up. Renders the Quarto site against the latest results
+# and deploys it to GitHub Pages.
+
+on:
+  # push:
+  #   paths: ['data/results/**', 'website/**']   # enable once site is set up
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - name: Render site
+        run: echo "TODO: cd website && quarto render"
+      # - uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: website/_site
+      # - uses: actions/deploy-pages@v4

@@ -1,0 +1,15 @@
+# Quarto build output
+/website/_site/
+/website/.quarto/
+**/index_files/
+**/index.html
+.quarto/
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# OS
+.DS_Store
