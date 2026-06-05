@@ -39,7 +39,9 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
   }
 
   fn <- match.fun(cfg$scraper[["function"]])
-  fn_args <- list(address = cfg$scraper$url)
+  fn_args <- list()
+  if ("address" %in% names(formals(fn)) && !is.null(cfg$scraper$url))
+    fn_args$address <- cfg$scraper$url
   if ("ind_row_remove" %in% names(formals(fn)) && !is.null(cfg$scraper$ind_row_remove))
     fn_args$ind_row_remove <- -cfg$scraper$ind_row_remove
 
@@ -49,15 +51,17 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
       pollster = gsub("forschungsgruppewahlen", "fgw", pollster)
     ) %>%
     collapse_parties(parties = parties) %>%
+    unnest(survey) %>%
     filter(date >= scrape_from) %>%
     mutate(election = cfg$id)
 
   # Drop poll dates where any required party is missing
   complete_dates <- fresh %>%
-    unnest(survey) %>%
-    group_by(date) %>%
+    group_by(date, pollster) %>%
     summarise(has_all = all(parties_required %in% party), .groups = "drop") %>%
-    filter(has_all) %>%
+    group_by(date) %>%
+    summarise(all_complete = all(has_all), .groups = "drop") %>%
+    filter(all_complete) %>%
     pull(date)
 
   n_dropped <- length(unique(fresh$date)) - length(complete_dates)
@@ -68,7 +72,7 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
 
   # Find rows not already in existing data
   if (!is.null(existing)) {
-    new_rows <- anti_join(fresh, existing, by = c("pollster", "date"))
+    new_rows <- anti_join(fresh, existing, by = c("pollster", "date", "party"))
   } else {
     new_rows <- fresh
   }
