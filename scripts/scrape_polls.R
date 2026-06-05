@@ -17,11 +17,21 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
   out_file <- file.path(out_dir, "polls.json")
 
   # Load existing data if available
-  if (file.exists(out_file)) {
-    existing <- as_tibble(fromJSON(out_file)) %>%
-      mutate(date = as.Date(date), start = as.Date(start), end = as.Date(end))
-    scrape_from <- max(existing$date) - 30  # re-scrape last 30 days to catch late additions
-    message(sprintf("  Existing data up to %s, re-scraping from %s\n", max(existing$date), scrape_from))
+  if (file.exists(out_file) && file.size(out_file) > 0) {
+    existing <- tryCatch(
+      as_tibble(fromJSON(out_file)) %>%
+        mutate(date = as.Date(date), start = as.Date(start), end = as.Date(end)),
+      error = function(e) {
+        message("  Could not parse existing JSON, starting fresh\n")
+        NULL
+      }
+    )
+    if (!is.null(existing)) {
+      scrape_from <- max(existing$date) - 30
+      message(sprintf("  Existing data up to %s, re-scraping from %s\n", max(existing$date), scrape_from))
+    } else {
+      scrape_from <- oldest_date
+    }
   } else {
     existing   <- NULL
     scrape_from <- oldest_date
