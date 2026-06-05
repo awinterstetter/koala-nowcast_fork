@@ -6,7 +6,7 @@ library(jsonlite)
 
 scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
   cfg <- read_yaml(config_path)
-  cat(sprintf("Scraping polls for %s...\n", cfg$name))
+  message(sprintf("Scraping polls for %s...\n", cfg$name))
 
   parties <- sapply(cfg$parties, `[[`, "id")
   parties_required <- sapply(cfg$parties, function(p) if (isTRUE(p$required)) p$id else NULL) |>
@@ -21,11 +21,11 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
     existing <- as_tibble(fromJSON(out_file)) %>%
       mutate(date = as.Date(date), start = as.Date(start), end = as.Date(end))
     scrape_from <- max(existing$date) - 30  # re-scrape last 30 days to catch late additions
-    cat(sprintf("  Existing data up to %s, re-scraping from %s\n", max(existing$date), scrape_from))
+    message(sprintf("  Existing data up to %s, re-scraping from %s\n", max(existing$date), scrape_from))
   } else {
     existing   <- NULL
     scrape_from <- oldest_date
-    cat(sprintf("  No existing data, scraping from %s\n", scrape_from))
+    message(sprintf("  No existing data, scraping from %s\n", scrape_from))
   }
 
   fn <- match.fun(cfg$scraper[["function"]])
@@ -52,7 +52,7 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
 
   n_dropped <- length(unique(fresh$date)) - length(complete_dates)
   if (n_dropped > 0)
-    cat(sprintf("  Dropped %d incomplete poll date(s)\n", n_dropped))
+    message(sprintf("  Dropped %d incomplete poll date(s)\n", n_dropped))
 
   fresh <- filter(fresh, date %in% complete_dates)
 
@@ -64,18 +64,18 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
   }
 
   if (nrow(new_rows) == 0) {
-    cat("  No new polls.\n")
+    message("  No new polls.\n")
     return(invisible(FALSE))
   }
 
-  cat(sprintf("  %d new poll(s) found\n", nrow(new_rows)))
+  message(sprintf("  %d new poll(s) found\n", nrow(new_rows)))
 
   # Append new rows and sort by date descending
   updated <- bind_rows(existing, new_rows) %>%
     arrange(desc(date))
 
   write_json(updated, out_file, pretty = TRUE, auto_unbox = TRUE)
-  cat(sprintf("  Saved to %s\n", out_file))
+  message(sprintf("  Saved to %s\n", out_file))
 
   invisible(TRUE)
 }
