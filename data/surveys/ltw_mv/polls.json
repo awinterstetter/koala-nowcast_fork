@@ -77,6 +77,94 @@
     "election": "ltw_mv"
   },
   {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "afd",
+    "percent": 35.7686,
+    "votes": 398.12,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "bsw",
+    "percent": 5,
+    "votes": 55.6521,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "cdu",
+    "percent": 11.1625,
+    "votes": 124.2428,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "fdp",
+    "percent": 1.1618,
+    "votes": 12.9308,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "greens",
+    "percent": 4.2321,
+    "votes": 47.1048,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "left",
+    "percent": 11.8382,
+    "votes": 131.7647,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "others",
+    "percent": 5,
+    "votes": 55.6521,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-05-13",
+    "start": "2026-02-19",
+    "end": "2026-05-13",
+    "respondents": 1113.0425,
+    "party": "spd",
+    "percent": 25.8369,
+    "votes": 287.5751,
+    "election": "ltw_mv"
+  },
+  {
     "pollster": "insa",
     "date": "2026-03-17",
     "start": "2026-03-17",
@@ -162,6 +250,94 @@
     "party": "others",
     "percent": 5,
     "votes": 50,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "afd",
+    "percent": 35.0014,
+    "votes": 369.1579,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "bsw",
+    "percent": 5.276,
+    "votes": 55.646,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "cdu",
+    "percent": 12.5178,
+    "votes": 132.0248,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "fdp",
+    "percent": 1.9301,
+    "votes": 20.3565,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "greens",
+    "percent": 4.4822,
+    "votes": 47.273,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "left",
+    "percent": 10.7939,
+    "votes": 113.8423,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "others",
+    "percent": 5,
+    "votes": 52.7347,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-03-17",
+    "start": "2026-01-27",
+    "end": "2026-03-17",
+    "respondents": 1054.6934,
+    "party": "spd",
+    "percent": 24.9986,
+    "votes": 263.6581,
     "election": "ltw_mv"
   },
   {
@@ -253,6 +429,94 @@
     "election": "ltw_mv"
   },
   {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "afd",
+    "percent": 36.2732,
+    "votes": 386.4644,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "bsw",
+    "percent": 5.3634,
+    "votes": 57.1428,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "cdu",
+    "percent": 13,
+    "votes": 138.5053,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "fdp",
+    "percent": 1.2732,
+    "votes": 13.5655,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "greens",
+    "percent": 4,
+    "votes": 42.617,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "left",
+    "percent": 11.3634,
+    "votes": 121.0683,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "others",
+    "percent": 5,
+    "votes": 53.2713,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-02-19",
+    "start": "2026-01-27",
+    "end": "2026-02-19",
+    "respondents": 1065.4256,
+    "party": "spd",
+    "percent": 23.7268,
+    "votes": 252.7909,
+    "election": "ltw_mv"
+  },
+  {
     "pollster": "infratest",
     "date": "2026-01-27",
     "start": "2026-01-27",
@@ -327,6 +591,83 @@
     "party": "others",
     "percent": 5,
     "votes": 57.25,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "afd",
+    "percent": 35,
+    "votes": 400.75,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "bsw",
+    "percent": 6,
+    "votes": 68.7,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "cdu",
+    "percent": 13,
+    "votes": 148.85,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "greens",
+    "percent": 4,
+    "votes": 45.8,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "left",
+    "percent": 12,
+    "votes": 137.4,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "others",
+    "percent": 5,
+    "votes": 57.25,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2026-01-27",
+    "start": "2026-01-27",
+    "end": "2026-01-27",
+    "respondents": 1145,
+    "party": "spd",
+    "percent": 25,
+    "votes": 286.25,
     "election": "ltw_mv"
   },
   {
@@ -407,6 +748,83 @@
     "election": "ltw_mv"
   },
   {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "afd",
+    "percent": 38,
+    "votes": 437.38,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "bsw",
+    "percent": 7,
+    "votes": 80.57,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "cdu",
+    "percent": 13,
+    "votes": 149.63,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "greens",
+    "percent": 5,
+    "votes": 57.55,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "left",
+    "percent": 12,
+    "votes": 138.12,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "others",
+    "percent": 6,
+    "votes": 69.06,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-09-25",
+    "start": "2025-09-25",
+    "end": "2025-09-25",
+    "respondents": 1151,
+    "party": "spd",
+    "percent": 19,
+    "votes": 218.69,
+    "election": "ltw_mv"
+  },
+  {
     "pollster": "insa",
     "date": "2025-04-28",
     "start": "2025-04-28",
@@ -481,6 +899,94 @@
     "party": "others",
     "percent": 7,
     "votes": 70,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "afd",
+    "percent": 29.2829,
+    "votes": 311.8499,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "bsw",
+    "percent": 7.8506,
+    "votes": 83.605,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "cdu",
+    "percent": 16.7603,
+    "votes": 178.4901,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "fdp",
+    "percent": 1.5677,
+    "votes": 16.6951,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "greens",
+    "percent": 5.7622,
+    "votes": 61.3653,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "left",
+    "percent": 11.0592,
+    "votes": 117.7757,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "others",
+    "percent": 6.4342,
+    "votes": 68.5218,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-04-28",
+    "start": "2025-01-28",
+    "end": "2025-04-28",
+    "respondents": 1064.9561,
+    "party": "spd",
+    "percent": 21.2829,
+    "votes": 226.6534,
     "election": "ltw_mv"
   },
   {
@@ -572,6 +1078,94 @@
     "election": "ltw_mv"
   },
   {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "afd",
+    "percent": 29.5413,
+    "votes": 431.7747,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "bsw",
+    "percent": 9.5413,
+    "votes": 139.4558,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "cdu",
+    "percent": 16.5413,
+    "votes": 241.7674,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "fdp",
+    "percent": 3,
+    "votes": 43.8478,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "greens",
+    "percent": 6.4587,
+    "votes": 94.3994,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "left",
+    "percent": 7.4587,
+    "votes": 109.0153,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "others",
+    "percent": 5.9173,
+    "votes": 86.4872,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-02-07",
+    "start": "2025-01-28",
+    "end": "2025-02-07",
+    "respondents": 1461.5948,
+    "party": "spd",
+    "percent": 21.5413,
+    "votes": 314.8472,
+    "election": "ltw_mv"
+  },
+  {
     "pollster": "infratest",
     "date": "2025-01-28",
     "start": "2025-01-28",
@@ -657,6 +1251,94 @@
     "party": "others",
     "percent": 5,
     "votes": 59.25,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "afd",
+    "percent": 30,
+    "votes": 355.5,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "bsw",
+    "percent": 10,
+    "votes": 118.5,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "cdu",
+    "percent": 17,
+    "votes": 201.45,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "fdp",
+    "percent": 3,
+    "votes": 35.55,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "greens",
+    "percent": 6,
+    "votes": 71.1,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "left",
+    "percent": 7,
+    "votes": 82.95,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "others",
+    "percent": 5,
+    "votes": 59.25,
+    "election": "ltw_mv"
+  },
+  {
+    "pollster": "pooled",
+    "date": "2025-01-28",
+    "start": "2025-01-28",
+    "end": "2025-01-28",
+    "respondents": 1185,
+    "party": "spd",
+    "percent": 22,
+    "votes": 260.7,
     "election": "ltw_mv"
   }
 ]
