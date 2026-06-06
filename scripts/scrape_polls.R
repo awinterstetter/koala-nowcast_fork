@@ -12,6 +12,7 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
   parties_required <- sapply(cfg$parties, function(p) if (isTRUE(p$required)) p$id else NULL) |>
     Filter(Negate(is.null), x = _)
 
+  # Define path and name of output file
   out_dir  <- file.path("data", "surveys", cfg$id)
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
   out_file <- file.path(out_dir, "polls.json")
@@ -38,13 +39,15 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
     message(sprintf("  No existing data, scraping from %s\n", scrape_from))
   }
 
+  # assign scraper function to fn
   fn <- match.fun(cfg$scraper[["function"]])
+  # define fn arguments and define them as needed
   fn_args <- list()
   if ("address" %in% names(formals(fn)) && !is.null(cfg$scraper$url))
     fn_args$address <- cfg$scraper$url
   if ("ind_row_remove" %in% names(formals(fn)) && !is.null(cfg$scraper$ind_row_remove))
     fn_args$ind_row_remove <- -cfg$scraper$ind_row_remove
-
+  # call function and replace/edit field values based on conventions
   fresh <- do.call(fn, fn_args) %>%
     mutate(
       pollster = replace(pollster, pollster == "infratestdimap", "infratest"),
@@ -84,12 +87,60 @@ scrape_election <- function(config_path, oldest_date = as.Date("2025-01-01")) {
 
   message(sprintf("  %d new poll(s) found\n", nrow(new_rows)))
 
-  # Append new rows and sort by date descending
-  updated <- bind_rows(existing, new_rows) %>%
-    arrange(desc(date))
+  # Merge existing raw polls with new rows
+  raw_updated <- bind_rows(
+    existing %>% filter(pollster != "pooled"),
+    new_rows
+  ) %>% arrange(desc(date))
+
+  # Recompute pooled estimates for all affected dates
+  pooled_updated <- compute_pooled(raw_updated, cfg)
+
+  # Drop old pooled rows for recomputed dates, replace with fresh ones
+  recompute_dates <- unique(pooled_updated$date)
+  existing_pooled <- existing %>%
+    filter(pollster == "pooled", !date %in% recompute_dates)
+
+  updated <- bind_rows(raw_updated, existing_pooled, pooled_updated) %>%
+    arrange(desc(date), pollster)
 
   write_json(updated, out_file, pretty = TRUE, auto_unbox = TRUE)
   message(sprintf("  Saved to %s\n", out_file))
 
   invisible(TRUE)
+}
+
+compute_pooled <- function(raw, cfg) {
+  pollsters <- sapply(cfg$pollsters, identity)
+  period          <- cfg$pooling$period
+  period_extended <- cfg$pooling$period_extended
+
+  # Reconstruct nested format expected by pool_surveys()
+  surveys_nested <- raw %>%
+    filter(pollster != "pooled") %>%
+    nest(data = c(party, percent, votes)) %>%
+    nest(surveys = c(date, start, end, respondents, data)) %>%
+    rename(survey = surveys)
+
+  # Pool for each date a raw poll was published
+  dates <- raw %>%
+    filter(pollster != "pooled") %>%
+    pull(date) %>%
+    unique() %>%
+    sort()
+
+  pooled <- lapply(dates, function(d) {
+    pool_surveys(
+      surveys        = surveys_nested,
+      last_date      = d,
+      pollsters      = pollsters,
+      period         = period,
+      period_extended = if (is.null(period_extended)) NA else period_extended
+    )
+  }) %>%
+    bind_rows() %>%
+    mutate(election = cfg$id)
+
+  message(sprintf("  Computed pooled estimates for %d date(s)\n", length(dates)))
+  pooled
 }
