@@ -38,10 +38,6 @@ parties:
     label: Grüne
     color: "#46962b"
     required: false
-  - id: fw
-    label: Freie Wähler
-    color: "#005fa3"
-    required: false
   - id: bsw
     label: BSW
     color: "#6d1f99"
