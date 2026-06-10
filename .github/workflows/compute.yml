@@ -41,3 +41,21 @@ jobs:
           git add data/surveys/
           git diff --staged --quiet || git commit -m "chore: scrape and pool polls $(date -I)"
           git push
+
+      - name: Compute coalition probabilities
+        if: steps.scrape.outputs.new_data == 'TRUE'
+        run: |
+          Rscript -e '
+            library(coalitions); library(dplyr); library(tidyr); library(yaml); library(jsonlite)
+            source("scripts/calc_coalProbs_helpers.R")
+            source("scripts/calc_coalProbs.R")
+            configs <- list.files("config/elections", pattern = "\\.yml$", full.names = TRUE)
+            invisible(lapply(configs, calc_coalProbs))
+          '
+
+      - name: Commit computed results
+        if: steps.scrape.outputs.new_data == 'TRUE'
+        run: |
+          git add data/results/
+          git diff --staged --quiet || git commit -m "chore: compute coalition probs $(date -I)"
+          git push
