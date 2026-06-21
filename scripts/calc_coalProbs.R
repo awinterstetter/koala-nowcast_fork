@@ -77,16 +77,62 @@ calc_coalProbs <- function(config_path, nsim = 10000, correction = 0.005, cores 
     print(paste0("Perform new calculations for ", p, "..."))
 
     calc_oneDate <- function(date_ins) {
-      survey <- survey_byTime %>%
+      survey_raw <- survey_byTime %>%
         filter(date == date_ins) %>%
         distinct(party, .keep_all = TRUE) %>%   # take first record per party when two surveys land on the same day
-        select(party, percent, votes) %>%
-        right_join(data.frame(party = parties, stringsAsFactors = FALSE), by = "party") %>%
+        select(party, percent, votes)
+
+      survey <- survey_raw %>%
+        filter(party != "others") %>%
+        right_join(data.frame(party = parties, stringsAsFactors = FALSE), by = "party")
+
+      # Impute parties absent from this poll from the closest date where they had > 0%;
+      # subtract the total imputed share from "others" (Sonstige) to keep percents consistent.
+      missing_pts <- survey$party[is.na(survey$percent)]
+      if (length(missing_pts) > 0) {
+        total_votes_cur   <- sum(survey_raw$votes, na.rm = TRUE)
+        ref_pool          <- survey_byTime %>% filter(date != date_ins, percent > 0,
+                                                      abs(as.numeric(date - date_ins)) <= 84)
+        total_imputed_pct <- 0
+
+        for (mp in missing_pts) {
+          mp_ref <- ref_pool %>%
+            filter(party == mp) %>%
+            mutate(days_diff = abs(as.numeric(date - date_ins))) %>%
+            arrange(days_diff)
+
+          if (nrow(mp_ref) > 0) {
+            imp_pct <- mp_ref$percent[1]
+            survey$percent[survey$party == mp] <- imp_pct
+            survey$votes[survey$party == mp]   <- round((imp_pct / 100) * total_votes_cur)
+            total_imputed_pct <- total_imputed_pct + imp_pct
+          }
+        }
+
+        # Subtract total imputed share from "others" and include it in survey so the
+        # Dirichlet is parameterised over the full 100%.
+        others_row <- survey_raw %>% filter(party == "others")
+        if (nrow(others_row) > 0) {
+          adj_pct <- max(0, others_row$percent[1] - total_imputed_pct)
+          survey <- bind_rows(survey, data.frame(
+            party   = "others",
+            percent = adj_pct,
+            votes   = as.integer(round((adj_pct / 100) * total_votes_cur)),
+            stringsAsFactors = FALSE
+          ))
+        }
+      }
+
+      survey <- survey %>%
         mutate(percent = ifelse(is.na(percent), 0, percent),
                votes   = ifelse(is.na(votes),   0, votes))
 
       dirichlet.draws    <- coalitions::draw_from_posterior(survey = survey, nsim = nsim, correction = correction)
-      seat.distributions <- coalitions::get_seats(dirichlet.draws, survey = survey,
+      # Drop "others" before seat allocation so majorities are computed over the
+      # explicitly modelled parties only (matching the parties vector).
+      dirichlet.draws    <- dirichlet.draws[, colnames(dirichlet.draws) != "others", drop = FALSE]
+      seat.distributions <- coalitions::get_seats(dirichlet.draws,
+                                                  survey = survey %>% filter(party != "others"),
                                                   distrib.fun = distrib_fun, n_seats = parl_seats)
 
       res_all   <- calc_allCoalProbs(seat.distributions, parties, dirichlet.draws,
@@ -204,6 +250,14 @@ calc_coalProbs <- function(config_path, nsim = 10000, correction = 0.005, cores 
     biggestParty       <- bind_rows(biggestParty,       read_result("biggestParty"))
     passHurdle         <- bind_rows(passHurdle,         read_result("passHurdle"))
   }
+
+  # ── Sort final output by date, then pollster ─────────────────────────────────
+  coalProbs          <- coalProbs          %>% dplyr::arrange(date, pollster)
+  sharesSim          <- sharesSim          %>% dplyr::arrange(date, pollster)
+  shares             <- shares             %>% dplyr::arrange(date, pollster)
+  coalProbs_grouping <- coalProbs_grouping %>% dplyr::arrange(date, pollster)
+  biggestParty       <- biggestParty       %>% dplyr::arrange(date, pollster)
+  passHurdle         <- passHurdle         %>% dplyr::arrange(date, pollster)
 
   # ── Save results ─────────────────────────────────────────────────────────────
   write_result <- function(x, name) jsonlite::write_json(x, file.path(results_dir, paste0(name, ".json")), auto_unbox = TRUE, pretty = TRUE)
