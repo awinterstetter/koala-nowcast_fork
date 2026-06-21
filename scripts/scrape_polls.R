@@ -131,9 +131,8 @@ impute_polls_for_pooling <- function(raw, cfg) {
       if (length(missing_pts) == 0) return(poll)
 
       ref <- raw %>%
-        filter(pollster == key$pollster, pollster != "pooled",
-               date != key$date, !is.na(percent), percent > 0,
-               abs(as.numeric(date - key$date)) <= 84)
+        filter(pollster != "pooled", date < key$date, !is.na(percent), percent > 0) %>%
+        mutate(same_pollster = pollster == key$pollster)
 
       total_votes       <- sum(poll$votes, na.rm = TRUE)
       total_imputed_pct <- 0
@@ -142,7 +141,7 @@ impute_polls_for_pooling <- function(raw, cfg) {
       for (mp in missing_pts) {
         mp_ref <- ref %>%
           filter(party == mp) %>%
-          arrange(abs(as.numeric(date - key$date)))
+          arrange(desc(date), desc(same_pollster))
 
         if (nrow(mp_ref) > 0) {
           imp_pct          <- mp_ref$percent[1]
